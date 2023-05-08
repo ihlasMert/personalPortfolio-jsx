@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { Container } from "@mui/material"
 import Header from "./components/Header/Header"
+import Definations from "./components/Definations/Definations"
 
 const App = () => {
   const [word, setWord] = useState("")
   const [meanings, setMeanings] = useState([])
+  const [category, setCategory] = useState("en")
 
   const dictionaryApi = async () => {
     try {
       const data = await axios.get(
-        "https://api.dictionaryapi.dev/api/v2/entries/en/plane"
+        `https://api.dictionaryapi.dev/api/v2/entries/${category}/${word}`
       )
       console.log(data)
       setMeanings(data.data)
@@ -18,11 +20,11 @@ const App = () => {
       console.log(error)
     }
   }
-  console.log(meanings)
+/*   console.log(meanings) */
 
   useEffect(() => {
     dictionaryApi()
-  }, [])
+  }, [word, category])
   return (
     <div
       className='app'
@@ -37,7 +39,13 @@ const App = () => {
           backgroundColor: "#282c32ack"
         }}
       >
-        <Header/>
+        <Header
+          category={category}
+          setCategory={setCategory}
+          word={word}
+          setWord={setWord}
+        />
+      {meanings &&  (<Definations word={word} meanings={meanings} categur={category} />)}
       </Container>
     </div>
   )

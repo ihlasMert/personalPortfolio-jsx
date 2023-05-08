@@ -12,3 +12,26 @@
   height: 35vh;
   width: 100%;
 }
+.search{
+  background-color: white;
+}
+.select{
+  background-color: white;
+}
+
+@media (max-width: 900px) {
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    height: 25vh;
+  }
+  .title {
+    font-size: 11vw;
+  }
+  input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+  }
+}

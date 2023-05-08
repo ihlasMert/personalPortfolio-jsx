@@ -1,9 +1,0 @@
-.meanings{
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-.subTitle{
-    font-size: 5vh;
-    font-family: 'Courier New', Courier, monospace;
-}
